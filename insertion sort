@@ -1,17 +1,15 @@
 #include <iostream>
 #include <vector>
-#include <limits> // For numeric_limits
+#include <limits>
 
 using namespace std;
 
-// Function to perform Insertion Sort
 void insertionSort(vector<int> &arr) {
     int n = arr.size();
     for (int i = 1; i < n; i++) {
         int key = arr[i];
         int j = i - 1;
 
-        // Move elements greater than key one position ahead
         while (j >= 0 && arr[j] > key) {
             arr[j + 1] = arr[j];
             j--;
@@ -20,7 +18,6 @@ void insertionSort(vector<int> &arr) {
     }
 }
 
-// Function to print an array
 void printArray(const vector<int> &arr) {
     for (int num : arr) {
         cout << num << " ";
