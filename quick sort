@@ -1,23 +1,21 @@
 #include <iostream>
 #include <vector>
-#include <limits> // For numeric_limits
+#include <limits> 
 
 using namespace std;
 
-// Function to swap two elements
 void swap(int &a, int &b) {
     int temp = a;
     a = b;
     b = temp;
 }
 
-// Partition function for Quick Sort
 int partition(vector<int> &arr, int low, int high) {
-    int pivot = arr[high]; // Choosing last element as pivot
+    int pivot = arr[high]; 
     int i = low - 1;
 
     for (int j = low; j < high; j++) {
-        if (arr[j] <= pivot) { // Elements <= pivot go to left
+        if (arr[j] <= pivot) { 
             i++;
             swap(arr[i], arr[j]);
         }
@@ -26,16 +24,14 @@ int partition(vector<int> &arr, int low, int high) {
     return i + 1;
 }
 
-// Quick Sort function
 void quickSort(vector<int> &arr, int low, int high) {
     if (low < high) {
         int pi = partition(arr, low, high);
-        quickSort(arr, low, pi - 1);  // Sort left subarray
-        quickSort(arr, pi + 1, high); // Sort right subarray
+        quickSort(arr, low, pi - 1);  
+        quickSort(arr, pi + 1, high); 
     }
 }
 
-// Function to print array
 void printArray(const vector<int> &arr) {
     for (int num : arr) {
         cout << num << " ";
@@ -47,7 +43,6 @@ int main() {
     int n;
     cout << "Enter number of elements: ";
 
-    // Validate input for size
     while (!(cin >> n) || n < 0) {
         cout << "Invalid input. Enter a non-negative integer: ";
         cin.clear();
@@ -56,7 +51,6 @@ int main() {
 
     vector<int> arr(n);
 
-    // Input array elements
     cout << "Enter " << n << " integers: ";
     for (int i = 0; i < n; i++) {
         while (!(cin >> arr[i])) {
@@ -69,7 +63,6 @@ int main() {
     cout << "\nOriginal array: ";
     printArray(arr);
 
-    // Sort array
     if (n > 1) {
         quickSort(arr, 0, n - 1);
     }
